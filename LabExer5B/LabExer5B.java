@@ -6,7 +6,7 @@ import java.nio.file.*;
 
 public class LabExer5B {
 
-		public LabExer5B() {
+	public LabExer5B() {
 
 			File File = new File("Questions.txt");
 			Path FilePath = Paths.get(File.toString());
@@ -14,7 +14,7 @@ public class LabExer5B {
 			String Array1[] = new String[1000];
 			String Array2[];
 
-			Random Argh = new Random();
+			Random IAmRandom = new Random();
 			Scanner usrInput = new Scanner(System.in);
 
 			String ErrorMsg = "Something went wrong... Exiting...";
@@ -37,9 +37,9 @@ public class LabExer5B {
 
 					}
 
-					Questions = Array1[Argh.nextInt(Count)];
+					Questions = Array1[IAmRandom.nextInt(Count)];
 
-					/* */
+					/*~~~~ INSTRUCTIONS ~~~~*/
 					try {
 
 						System.out.print( "\033[H\033[2J" );
@@ -73,16 +73,23 @@ public class LabExer5B {
 
 					} while (true);
 
-				} catch () {}
+				} catch ( Exception Error ) {
 
-			} catch () {}
+					System.out.println ( ErrorMsg );
+					System.exit(1);
+
+			} finally {
+
+				usrInput.close(); 
+			
+			}
 
 		}
 
-		public static void main (String[] args) {
+	public static void main(String[] args) {
 
-			new LabExer5B();
+		new LabExer5B();
 
-		}
-	
+	}
+
 }
