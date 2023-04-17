@@ -20,7 +20,7 @@ public class LabExer5A {
     	Scanner usrInput = new Scanner ( System.in );
 
     	/*~~~~ Random Number Generator ~~~~*/
-		int Num = IAmRandom.nextInt ( (50 - 1) + 1 ) + 1;
+		int Num = IAmRandom.nextInt ( ( 50 - 1 ) + 1 ) + 1;
 
 		/*~~~~ Universal Variables ~~~~*/
     	int x, usrGuess;
