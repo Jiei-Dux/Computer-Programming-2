@@ -210,7 +210,8 @@ public class LabExer5B {
 				String usrChoice = usrInput.nextLine();
 
 				/* ~~~~ ANSWER CHECKING #1 ~~~~~ */
-				if (usrChoice.equalsIgnoreCase("A") | usrChoice.equalsIgnoreCase("B") || usrChoice.equalsIgnoreCase("C")) {
+				if (usrChoice.equalsIgnoreCase("A") | usrChoice.equalsIgnoreCase("B")
+						|| usrChoice.equalsIgnoreCase("C")) {
 					if (usrChoice.equalsIgnoreCase(Answer[QuestionCounter])) {
 						++ScoreCounter;
 					}
@@ -219,6 +220,8 @@ public class LabExer5B {
 			} catch (Exception ERROR) {
 
 				//
+			} finally {
+				usrInput.close();
 			}
 
 			QuestionNumber++;
