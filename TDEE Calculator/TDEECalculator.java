@@ -145,27 +145,32 @@ public class TDEECalculator {
         switch (gender) {
             case 'M' :{
                 System.out.printf   ( BMR + "%.2f" + "\n", BMR_M );
-                break;
+				usrInput.close();
+                System.exit(0);
 			}
                 
             case 'm':{ 
                 System.out.printf   ( BMR + "%.2f" + "\n", BMR_M );
-                break;
+				usrInput.close();
+                System.exit(0);
 			}
                 
             case 'F':{
                 System.out.printf   ( BMR + "%.2f" + "\n", BMR_F );
-                break;
+				usrInput.close();
+                System.exit(0);
 			}
                 
             case 'f':{
                 System.out.printf   ( BMR + "%.2f" + "\n", BMR_F );
-                break;
+				usrInput.close();
+                System.exit(0);
 			}
                 
             default :{
                 System.out.println  ( " F**king... Nevermind... Exiting... ");
-                break;
+				usrInput.close();
+                System.exit(1);
 			}
         }
 
