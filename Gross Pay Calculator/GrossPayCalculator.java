@@ -1,5 +1,3 @@
-//package grosspaycalculator;
-
 import java.util.*;
 
 public class GrossPayCalculator {
@@ -83,6 +81,8 @@ public class GrossPayCalculator {
             System.out.println      ( "-----------------------------" );
             System.out.println      ( "Gross Pay: " + "$ " + String.format ("%.2f", GrossPay ) );
             System.out.println      ( "\n" );
+			prompt.close();
+			System.exit(0);
             
         }
         
@@ -135,6 +135,8 @@ public class GrossPayCalculator {
             System.out.println      ( "-----------------------------" );
             System.out.println      ( " Gross Pay: " + "$ " + String.format ( "%.2f", GrossPay ) );
             System.out.println      ( "\n" );
+			prompt.close();
+			System.exit(0);
             
         }
         
@@ -146,6 +148,8 @@ public class GrossPayCalculator {
             
             System.out.println      ( "\n" );
             System.out.println      ( " Error... Do you even know how to read? " );
+			prompt.close();
+			System.exit(1);
             
         }
         
