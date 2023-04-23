@@ -1,32 +1,74 @@
 
-/*==== LIBRARY IMPORTS ==== */
+/* ==== LIBRARY IMPORTS ==== */
 import java.io.*;
 import java.util.*;
 import java.nio.file.*;
 import static java.lang.System.*;
 import static java.nio.file.StandardOpenOption.*;
 
+/* ==== MAIN CLASS ==== */
 public class UserLogin {
 
-	/* ==== CLASSES ==== */
+	/* ==== SCANNER ==== */
 	Scanner usrInput = new Scanner(in);
-	String filename = "records.txt";
 
 	/* ==== GLOBAL VARIABLES ==== */
 	int x;
+	String filename = "records.txt";
+	String Username, Passwd;
 
 	/* ==== CLEAR CONSOLE TERMINAL ==== */
 	private void clear() {
-
 		out.print("\033[H\033[2J");
 		out.flush();
-
 	}
 
 	/* ==== ERROR MESSAGES ==== */
 	private void ErrorMsg_INTERRUPT() {
-
 		out.println("Something Interrupted the Process... Exiting");
+		exit(1);
+	}
+
+	/* ==== SUCCESSFUL LOGIN MESSAGE ==== */
+	private void Success() {
+
+		String successLogIn = "You are now LOGGED IN!";
+
+		for (x = 0; x < successLogIn.length(); x++) {
+
+			out.printf("%c", successLogIn.charAt(x));
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException INTERRUPT) {
+				ErrorMsg_INTERRUPT();
+			}
+
+		}
+
+		out.println();
+		pressENTER();
+		exit(0);
+
+	}
+
+	/* ==== FAILED LOGIN MESSAGE ==== */
+	private void Failed() {
+
+		String failLogIn = "Wrong Username and/or Password...";
+
+		for (x = 0; x < failLogIn.length(); x++) {
+
+			out.printf("%c", failLogIn.charAt(x));
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException INTERRUPT) {
+				ErrorMsg_INTERRUPT();
+			}
+
+		}
+
+		out.println();
+		pressENTER();
 		exit(1);
 
 	}
@@ -40,7 +82,7 @@ public class UserLogin {
 
 			out.printf("%c", pressENTER.charAt(x));
 			try {
-				Thread.sleep(15);
+				Thread.sleep(5);
 			} catch (InterruptedException INTERRUPT) {
 				ErrorMsg_INTERRUPT();
 			}
@@ -56,66 +98,10 @@ public class UserLogin {
 
 	}
 
-	/* ==== ADD MORE ACCOUNTS? ==== */
-	private void addAccounts() {
-
-		String addAccounts = "Continue Adding Accounts? (Y/n): ";
-		String aight = "Aight then... exiting... ";
-
-		for (x = 0; x < addAccounts.length(); x++) {
-
-			out.printf("%c", addAccounts.charAt(x));
-			try {
-				Thread.sleep(5);
-			} catch (InterruptedException INTERRUPT) {
-				ErrorMsg_INTERRUPT();
-			}
-
-		}
-
-		String usrChoice = usrInput.nextLine();
-
-		/* CHECK INPUT */
-		if (usrChoice.equalsIgnoreCase("Y") || usrChoice.equalsIgnoreCase("N")) {
-
-			if (usrChoice.equalsIgnoreCase("Y")) {
-
-				new UserLogin();
-
-			} else if (usrChoice.equalsIgnoreCase("N")) {
-
-				for (x = 0; x < aight.length(); x++) {
-
-					out.printf("%c", aight.charAt(x));
-					try {
-						Thread.sleep(5);
-					} catch (InterruptedException INTERRUPT) {
-						ErrorMsg_INTERRUPT();
-					}
-
-				}
-
-			}
-
-		}
-
-		/* DEFAULTS TO "YES" IF USER ONLY PRESSED <ENTER> */
-		if (usrChoice.isBlank()) {
-
-			new UserLogin();
-
-		}
-
-		if (usrChoice.length() != 1) {
-
-			throw new InputMismatchException("\n\nInput only one letter moron! ");
-
-		}
-
-	}
-
 	/* ==== MAIN MENU ==== */
 	private void MainMenu() {
+
+		clear();
 
 		String mainmenu = """
 				========== ========== ========== ==========
@@ -175,16 +161,17 @@ public class UserLogin {
 
 			}
 
-			if (usrChoice.length() != 1) {
-				throw new InputMismatchException("\n\nInput only one letter moron! ");
-			}
-
 			if (usrChoice.isBlank()) {
 				throw new Exception("\n\nInput something moron! ");
 			}
 
+			if (usrChoice.length() != 1) {
+				throw new InputMismatchException("\n\nInput only one letter moron! ");
+			}
+
 		} catch (Exception ERRORS) {
 
+			clear();
 			out.println(ERRORS);
 			exit(1);
 
@@ -192,21 +179,20 @@ public class UserLogin {
 
 	}
 
+	/* ==== CREATE ACCOUNT ==== */
 	void CreateAccount() {
 
 		try {
+
+			clear();
 
 			Path filepath = Paths.get(filename.toString());
 			OutputStream output = new BufferedOutputStream(Files.newOutputStream(filepath, APPEND));
 			BufferedWriter editor = new BufferedWriter(new OutputStreamWriter(output));
 
-			out.print("Enter username: ");
-			String username = usrInput.nextLine();
+			Input();
 
-			out.print("Enter password: ");
-			String passwd = usrInput.nextLine();
-
-			editor.write(username + " " + passwd);
+			editor.write(Username + " " + Passwd);
 			editor.newLine();
 
 			out.println("Account added!");
@@ -224,47 +210,40 @@ public class UserLogin {
 
 	}
 
+	/* ==== LOGIN ACCOUNT ==== */
 	void LoginAccount() {
 
 		try {
+
+			clear();
 
 			Path filepath = Paths.get(filename.toString());
 			InputStream input = Files.newInputStream(filepath);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 
-			out.print("Enter username: ");
-			String username = usrInput.nextLine();
+			Input();
 
-			out.print("Enter password: ");
-			String passwd = usrInput.nextLine();
-
-			String _temp = null;
-			String _user, _pass;
+			String File = null;
+			String username, passwd;
 			boolean found = false;
 
-			while ((_temp = reader.readLine()) != null) {
+			while ((File = reader.readLine()) != null) {
 
-				String[] account = _temp.split(" ");
-				_user = account[0];
-				_pass = account[1];
+				String[] account = File.split(" ");
+				username = account[0];
+				passwd = account[1];
 
-				if (_user.equals(username) && _pass.equals(passwd)) {
+				if (username.equals(Username) && passwd.equals(Passwd)) {
 					found = true;
 				}
 
 			}
 
 			if (found == true) {
-
-				out.println("You are now LOGGED IN!");
-				out.println("Exiting... ");
-				exit(0);
-
+				Success();
 			} else {
-
-				out.println("Screw off bro...");
+				Failed();
 				pressENTER();
-
 			}
 
 		} catch (IOException ERROR) {
@@ -273,15 +252,96 @@ public class UserLogin {
 
 	}
 
+	/* ==== ASK USER FOR INPUT ==== */
+	private void Input() {
+
+		String askUsername = "Enter username: ";
+		String askPasswd = "Enter password: ";
+
+		for (x = 0; x < askUsername.length(); x++) {
+
+			out.printf("%c", askUsername.charAt(x));
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException INTERRUPT) {
+				ErrorMsg_INTERRUPT();
+			}
+
+		}
+		Username = usrInput.nextLine();
+
+		for (x = 0; x < askPasswd.length(); x++) {
+
+			out.printf("%c", askPasswd.charAt(x));
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException INTERRUPT) {
+				ErrorMsg_INTERRUPT();
+			}
+
+		}
+		Passwd = usrInput.nextLine();
+
+	}
+
+	/* ==== ADD MORE ACCOUNTS? ==== */
+	private void addAccounts() {
+
+		clear();
+
+		String addAccounts = "Continue Adding Accounts? (Y/n): ";
+		String aight = "Aight then... exiting... ";
+
+		for (x = 0; x < addAccounts.length(); x++) {
+
+			out.printf("%c", addAccounts.charAt(x));
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException INTERRUPT) {
+				ErrorMsg_INTERRUPT();
+			}
+
+		}
+
+		String usrChoice = usrInput.nextLine();
+
+		/* CHECK INPUT */
+		if (usrChoice.equalsIgnoreCase("Y") || usrChoice.equalsIgnoreCase("N")) {
+
+			if (usrChoice.equalsIgnoreCase("Y")) {
+				CreateAccount();
+			} else if (usrChoice.equalsIgnoreCase("N")) {
+
+				clear();
+
+				for (x = 0; x < aight.length(); x++) {
+
+					out.printf("%c", aight.charAt(x));
+					try {
+						Thread.sleep(5);
+					} catch (InterruptedException INTERRUPT) {
+						ErrorMsg_INTERRUPT();
+					}
+
+				}
+
+			}
+
+		}
+
+		/* DEFAULTS TO "YES" IF USER ONLY PRESSED <ENTER> */
+		if (usrChoice.isBlank()) {
+			CreateAccount();
+		}
+
+	}
+
 	/* ==== PROGRAM FUNCTIONS ==== */
 	public UserLogin() {
 
 		try {
-
-			clear();
 			MainMenu();
 			Answer();
-
 		} catch (Exception ERROR) {
 			out.println(ERROR.getMessage());
 		}
@@ -290,9 +350,7 @@ public class UserLogin {
 
 	/* ==== RUN PROGRAM ==== */
 	public static void main(String[] args) {
-
 		new UserLogin();
-
 	}
 
 }

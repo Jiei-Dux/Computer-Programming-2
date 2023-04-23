@@ -1,2 +1,8 @@
-student1 123
-student2 321
+student1 1
+student2 2
+student3 3
+student4 4
+student5 5
+student6 6
+student7 7
+student8 8
