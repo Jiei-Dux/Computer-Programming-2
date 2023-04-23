@@ -1,3 +1,2 @@
-Student1 20001
-Student2 20002
-Student3 20003
+student1 20001
+student2 20002
