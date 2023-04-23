@@ -59,17 +59,17 @@ public class LabExer5B {
 				" BTRFS ", // 9
 				" primetime ", // 10
 		};
-		char Answer[] = {
-				'A', // 1
-				'B', // 2
-				'B', // 3
-				'A', // 4
-				'B', // 5
-				'C', // 6
-				'C', // 7
-				'C', // 8
-				'B', // 9
-				'A', // 10
+		String Answer[] = {
+				"A", // 1
+				"B", // 2
+				"B", // 3
+				"A", // 4
+				"B", // 5
+				"C", // 6
+				"C", // 7
+				"C", // 8
+				"B", // 9
+				"A", // 10
 		};
 
 		// Answers Cheat Sheet
@@ -211,8 +211,7 @@ public class LabExer5B {
 					String usrChoice = usrInput.nextLine();
 
 					/* ~~~~ ANSWER CHECKING #1 ~~~~~ */
-					if (usrChoice.equalsIgnoreCase('A') || usrChoice.equalsIgnoreCase('B')
-							|| usrChoice.equalsIgnoreCase('C')) {
+					if (usrChoice.equalsIgnoreCase("A") || usrChoice.equalsIgnoreCase("B") || usrChoice.equalsIgnoreCase("C")) {
 						if (usrChoice.equalsIgnoreCase(Answer[QuestionCounter])) {
 							++ScoreCounter;
 						}
