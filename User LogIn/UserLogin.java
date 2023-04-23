@@ -12,7 +12,8 @@ public class UserLogin {
 	Scanner usrInput = new Scanner(in);
 	String filename = "records.txt";
 
-
+	/* ==== GLOBAL VARIABLES ==== */
+	int x;
 
 	/* ==== CLEAR CONSOLE TERMINAL ==== */
 	private void clear() {
@@ -22,8 +23,6 @@ public class UserLogin {
 
 	}
 
-
-
 	/* ==== ERROR MESSAGES ==== */
 	private void ErrorMsg_INTERRUPT() {
 
@@ -32,16 +31,14 @@ public class UserLogin {
 
 	}
 
-
-
 	/* ==== PRESS ENTER TO CONTINUE ==== */
 	private void pressENTER() {
 
 		String pressENTER = "Press ENTER to Continue... ";
 
-		for (int x = 0; x < pressENTER.length(); x++) {
+		for (x = 0; x < pressENTER.length(); x++) {
 
-			System.out.printf("%c", pressENTER.charAt(x));
+			out.printf("%c", pressENTER.charAt(x));
 			try {
 				Thread.sleep(15);
 			} catch (InterruptedException INTERRUPT) {
@@ -51,20 +48,71 @@ public class UserLogin {
 		}
 
 		try {
-			System.in.read();
-			System.exit(0);
+			in.read();
+			exit(0);
 		} catch (Exception ERRORS) {
 			ErrorMsg_INTERRUPT();
 		}
 
 	}
 
-
-
 	/* ==== ADD MORE ACCOUNTS? ==== */
-	private void Accounts
+	private void addAccounts() {
 
+		String addAccounts = "Continue Adding Accounts? (Y/n): ";
+		String aight = "Aight then... exiting... ";
 
+		for (x = 0; x < addAccounts.length(); x++) {
+
+			out.printf("%c", addAccounts.charAt(x));
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException INTERRUPT) {
+				ErrorMsg_INTERRUPT();
+			}
+
+		}
+
+		String usrChoice = usrInput.nextLine();
+
+		/* CHECK INPUT */
+		if (usrChoice.equalsIgnoreCase("Y") || usrChoice.equalsIgnoreCase("N")) {
+
+			if (usrChoice.equalsIgnoreCase("Y")) {
+
+				new UserLogin();
+
+			} else if (usrChoice.equalsIgnoreCase("N")) {
+
+				for (x = 0; x < aight.length(); x++) {
+
+					out.printf("%c", aight.charAt(x));
+					try {
+						Thread.sleep(5);
+					} catch (InterruptedException INTERRUPT) {
+						ErrorMsg_INTERRUPT();
+					}
+
+				}
+
+			}
+
+		}
+
+		/* DEFAULTS TO "YES" IF USER ONLY PRESSED <ENTER> */
+		if (usrChoice.isBlank()) {
+
+			new UserLogin();
+
+		}
+
+		if (usrChoice.length() != 1) {
+
+			throw new InputMismatchException("\n\nInput only one letter moron! ");
+
+		}
+
+	}
 
 	/* ==== MAIN MENU ==== */
 	private void MainMenu() {
@@ -84,7 +132,7 @@ public class UserLogin {
 
 				""";
 
-		for (int x = 0; x < mainmenu.length(); x++) {
+		for (x = 0; x < mainmenu.length(); x++) {
 
 			out.printf("%c", mainmenu.charAt(x));
 			try {
@@ -97,46 +145,52 @@ public class UserLogin {
 
 	}
 
-
-
 	/* ==== INPUT CHECKING ==== */
 	private void Answer() {
 
-		String Ans = "Enter Answer: ";
+		try {
 
-		for (int x = 0; x < Ans.length(); x++) {
+			String Ans = "Enter Answer: ";
 
-			out.printf("%c", Ans.charAt(x));
-			try {
-				Thread.sleep(5);
-			} catch (InterruptedException INTERRUPT) {
-				ErrorMsg_INTERRUPT();
+			for (x = 0; x < Ans.length(); x++) {
+
+				out.printf("%c", Ans.charAt(x));
+				try {
+					Thread.sleep(5);
+				} catch (InterruptedException INTERRUPT) {
+					ErrorMsg_INTERRUPT();
+				}
+
 			}
 
-		}
+			String usrChoice = usrInput.nextLine();
 
-		String usrChoice = usrInput.nextLine();
+			if (usrChoice.equalsIgnoreCase("A") || usrChoice.equalsIgnoreCase("B")) {
 
-		if (usrChoice.equalsIgnoreCase("a")) {
+				if (usrChoice.equalsIgnoreCase("A")) {
+					CreateAccount();
+				} else if (usrChoice.equalsIgnoreCase("B")) {
+					LoginAccount();
+				}
 
-			CreateAccount();
+			}
 
-		} else if (usrChoice.equalsIgnoreCase("b")) {
+			if (usrChoice.length() != 1) {
+				throw new InputMismatchException("\n\nInput only one letter moron! ");
+			}
 
-			LoginAccount();
+			if (usrChoice.isBlank()) {
+				throw new Exception("\n\nInput something moron! ");
+			}
+
+		} catch (Exception ERRORS) {
+
+			out.println(ERRORS);
+			exit(1);
 
 		}
 
 	}
-
-
-
-
-
-
-
-
-
 
 	void CreateAccount() {
 
@@ -155,27 +209,20 @@ public class UserLogin {
 			editor.write(username + " " + passwd);
 			editor.newLine();
 
-			out.println("Account saved!");
+			out.println("Account added!");
 
 			editor.close();
 			output.close();
 
-		} catch (Exception ERRORS) {
+			addAccounts();
 
+		} catch (IOException ERRORS) {
 
+			out.println(ERRORS.getMessage());
 
 		}
 
 	}
-
-
-
-
-
-
-
-
-
 
 	void LoginAccount() {
 
@@ -209,7 +256,9 @@ public class UserLogin {
 
 			if (found == true) {
 
-				out.println("LOGGED IN!");
+				out.println("You are now LOGGED IN!");
+				out.println("Exiting... ");
+				exit(0);
 
 			} else {
 
@@ -218,22 +267,11 @@ public class UserLogin {
 
 			}
 
-
-		} catch ( IOException ERROR) {}
-		
-
-
+		} catch (IOException ERROR) {
+			out.println(ERROR.getMessage());
+		}
 
 	}
-
-
-
-
-
-
-
-
-
 
 	/* ==== PROGRAM FUNCTIONS ==== */
 	public UserLogin() {
@@ -243,24 +281,12 @@ public class UserLogin {
 			clear();
 			MainMenu();
 			Answer();
-			
-
-
 
 		} catch (Exception ERROR) {
-
+			out.println(ERROR.getMessage());
 		}
 
 	}
-
-
-
-
-
-
-
-
-
 
 	/* ==== RUN PROGRAM ==== */
 	public static void main(String[] args) {
