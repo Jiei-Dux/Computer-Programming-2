@@ -1,8 +1,3 @@
-student1 1
-student2 2
-student3 3
-student4 4
-student5 5
-student6 6
-student7 7
-student8 8
+Student1 20001
+Student2 20002
+Student3 20003

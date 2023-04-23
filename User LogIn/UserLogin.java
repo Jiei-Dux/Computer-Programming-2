@@ -268,7 +268,7 @@ public class UserLogin {
 			}
 
 		}
-		Username = usrInput.nextLine();
+		Username = usrInput.nextLine().toLowerCase();
 
 		for (x = 0; x < askPasswd.length(); x++) {
 
@@ -280,7 +280,7 @@ public class UserLogin {
 			}
 
 		}
-		Passwd = usrInput.nextLine();
+		Passwd = usrInput.nextLine().toLowerCase();
 
 	}
 
