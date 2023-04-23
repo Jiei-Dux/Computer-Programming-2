@@ -29,27 +29,18 @@ public class QuizBee {
 		for (int x = 0; x < pressENTER.length(); x++) {
 
 			System.out.printf("%c", pressENTER.charAt(x));
-
 			try {
-
 				Thread.sleep(15);
-
 			} catch (InterruptedException INTERRUPT) {
-
 				errorMsgInterrupt();
-
 			}
 
 		}
 
 		try {
-
 			System.in.read();
-
 		} catch (Exception ERRORS) {
-
 			errorMsgInterrupt();
-
 		}
 
 	}
