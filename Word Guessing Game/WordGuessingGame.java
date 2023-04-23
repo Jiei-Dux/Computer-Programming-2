@@ -4,9 +4,9 @@ import java.io.*;
 import java.util.*;
 import java.nio.file.*;
 
-public class LabExer6A {
+public class WordGuessingGame {
 
-	public LabExer6A() {
+	public WordGuessingGame() {
 
 		File File = new File("Custom-Words.txt");
 		Path FilePath = Paths.get(File.toString());
@@ -272,7 +272,7 @@ public class LabExer6A {
 
 	public static void main(String[] arg) {
 
-		new LabExer6A();
+		new WordGuessingGame();
 
 	}
 
