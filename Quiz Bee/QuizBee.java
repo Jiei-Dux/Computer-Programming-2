@@ -1,3 +1,5 @@
+/* This is a Mistake Program - Quiz Bee Edition */
+
 import java.util.*;
 
 public class QuizBee {
