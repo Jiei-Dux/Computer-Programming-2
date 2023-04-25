@@ -1,7 +1,7 @@
 # Computer Programming 2
 
 
-<List Title Here>:
+List Title Here:
 - TDEE Calculator
 - Gross Pay Calculator
 - TiaMP - Quiz Bee Edition
