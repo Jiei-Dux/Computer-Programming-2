@@ -9,7 +9,8 @@ public class EnumDemo {
 
         Period pd;
         String input;
-        int position, comparison;
+        int position;
+        //int comparison;
 
         Scanner usrInput = new Scanner (System.in);
         out.println("The grading periods are: ");
