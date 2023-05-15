@@ -15,12 +15,12 @@ public class EnumDemo {
         out.println("The grading periods are: ");
         for (Period p : Period.values())
 
-        out.print(p + " ");
+        out.print(p + " \n");
         out.print("\nSelect a grading period: ");
         input = usrInput.nextLine().toUpperCase();
         pd = Period.valueOf(input);
 
-        out.println("You entered " + pd);
+        out.println("\nYou entered " + pd + "\n");
         position = pd.ordinal();
 
         out.println(pd + " is in position " + position);
