@@ -20,6 +20,7 @@ public class EnumDemo {
         out.print("\nSelect a grading period: ");
         input = usrInput.nextLine().toUpperCase();
         pd = Period.valueOf(input);
+        usrInput.close();
 
         out.println("\nYou entered " + pd + "\n");
         position = pd.ordinal();
