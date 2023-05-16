@@ -15,11 +15,13 @@ class Model {
 }
 
 /*
+ *
  *      Just a quick note... It said in the Instructions to make the
  *      class and enum have the same names but, just as I have guessed...
  *      it will never work because they have the same ******* name...
  * 
  *      Which is why I changed their names... (e.g. Model and Color)
+ * 
  */
 
 class Car {
