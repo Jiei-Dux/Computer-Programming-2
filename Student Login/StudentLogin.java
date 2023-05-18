@@ -1,6 +1,5 @@
 /* ==== LIBRARY IMPORTS ==== */
 import java.util.*;
-import java.util.regex.*;
 import static java.lang.System.*;
 
 /* ==== MAIN CODE ==== */
