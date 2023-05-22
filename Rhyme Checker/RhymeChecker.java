@@ -34,7 +34,8 @@ public class RhymeChecker {
 			out.println(word2 + " rhymes with " + word1);
 		} else {
 			out.println("oop... looks like " + 
-						word2 + " does not rhyme with " + 
+						word2 + 
+						" does not rhyme with " + 
 						word1 + 
 						" or theres more than 2 letters before '" + sub + "'. ");
 		}
