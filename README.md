@@ -3,10 +3,13 @@
 TiaMP = This is a Mistake Program
 List Title Here:
 <ul>
- <li>TDEE Calculator</li>
- <li>Gross Pay Calculator</li>
- <li>TiaMP - Quiz Bee Edition</li>
- <li>TiaMP - Number Guessing Edition</li>
- <li>TiaMP - Word Guessing Edition</li>
- <li>TiaMP - UserLogin Edition</li>
+ <li>TiaMP - TDEE Calculator</li>
+ <li>TiaMP - Gross Pay Calculator</li>
+ <li>TiaMP - Quiz Bee</li>
+ <li>TiaMP - Number Guessing/li>
+ <li>TiaMP - Word Guessing</li>
+ <li>TiaMP - UserLogin</li>
+ <li>TiaMP - Rhyme Checker</li>
+ <li>TiaMP - Sample Program</li>
+ <li>TiaMP - Car Demo</li>
 </ul>
