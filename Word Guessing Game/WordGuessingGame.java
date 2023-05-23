@@ -1,5 +1,3 @@
-// package LabExer6A;
-
 import java.io.*;
 import java.util.*;
 import java.nio.file.*;
