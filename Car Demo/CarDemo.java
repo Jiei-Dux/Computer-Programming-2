@@ -42,7 +42,7 @@ class Car {
     /* ---- DISPLAY METHOD ---- */
     public void display() {
 
-        out.println("Model: " + model + " Color: " + color + " Year: " + year );
+        out.print("Model: " + model + "\n" + "Color: " + color + "\n" + "Year: " + year + "\n\n" );
 
     }
 
