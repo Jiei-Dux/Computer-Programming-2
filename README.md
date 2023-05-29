@@ -6,7 +6,7 @@ List Title Here:
  <li>TiaMP - TDEE Calculator</li>
  <li>TiaMP - Gross Pay Calculator</li>
  <li>TiaMP - Quiz Bee</li>
- <li>TiaMP - Number Guessing/li>
+ <li>TiaMP - Number Guessing</li>
  <li>TiaMP - Word Guessing</li>
  <li>TiaMP - UserLogin</li>
  <li>TiaMP - Rhyme Checker</li>
