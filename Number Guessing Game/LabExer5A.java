@@ -12,144 +12,135 @@ import java.util.*;
 
 public class LabExer5A {
 
-    /*~~~~ MAIN CODE ~~~~*/
-    public static void main ( String[] args ) {
+	/* ~~~~ MAIN CODE ~~~~ */
+	public static void main(String[] args) {
 
-    	/*~~~~ Classes ~~~~*/
-		Random IAmRandom = new Random ();
-    	Scanner usrInput = new Scanner ( System.in );
+		/* ~~~~ Classes ~~~~ */
+		Random IAmRandom = new Random();
+		Scanner usrInput = new Scanner(System.in);
 
-    	/*~~~~ Random Number Generator ~~~~*/
-		int Num = IAmRandom.nextInt ( ( 50 - 1 ) + 1 ) + 1;
+		/* ~~~~ Random Number Generator ~~~~ */
+		int Num = IAmRandom.nextInt((50 - 1) + 1) + 1;
 
-		/*~~~~ Universal Variables ~~~~*/
-    	int x, usrGuess;
+		/* ~~~~ Universal Variables ~~~~ */
+		int x, usrGuess;
 		String ErrorMsg = " Why would you do that?? ";
-
 
 		try {
 
+			/* ~~~~ INSTRUCTIONS ~~~~ */
 
-    		/*~~~~ INSTRUCTIONS ~~~~*/
-		
-    	    	/*--- UPI Variables ---*/
-    	    	String Instructions = 
-    	        	"""
+			/*--- UPI Variables ---*/
+			String Instructions = """
 					The system has chosen a number between 1 - 50.
-					 
+
 					Now start guessing! \n
-    	        	""";
+					        	""";
 
-        		/*--- User / Player Instructions ---*/
-				System.out.print( "\033[H\033[2J" );
-				System.out.flush();
+			/*--- User / Player Instructions ---*/
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
 
-        		for ( x = 0; x < Instructions.length(); x++ ) {
+			for (x = 0; x < Instructions.length(); x++) {
 
-        	    	System.out.printf ("%c", Instructions.charAt(x));
+				System.out.printf("%c", Instructions.charAt(x));
 
-            		try { Thread.sleep(20); } 
-					catch ( InterruptedException Error ) { System.out.println ( ErrorMsg ); }
+				try {
+					Thread.sleep(20);
+				} catch (InterruptedException Error) {
+					System.out.println(ErrorMsg);
+				}
 
-        		}
+			}
 
+			/* ~~~~ GAME ~~~~ */
+			while (true) {
 
+				System.out.print("Guess: ");
 
+				// Get usrInput
+				usrGuess = usrInput.nextInt();
 
-    		/*~~~~ GAME ~~~~*/
-    		while ( true ) {
+				// -- Check usrGuess --//
 
-    	    	System.out.print ( "Guess: " );
+				// usrGuess Variables
+				String CorrectGuess = """
 
-    	    	// Get usrInput
-    	    	usrGuess = usrInput.nextInt();
+						Wow! You guessed the number!
 
-    	    	//-- Check usrGuess --//
+						Congratulations!
 
-    	        	// usrGuess Variables
-    	        	String CorrectGuess = 
-    	        	    """
-						 
-    	        	    Wow! You guessed the number!
-						 
-    	        	    Congratulations!
-						 
-    	        	    """;
+						""";
 
-        	    	String WrongGuessLess =
-        	    	    " \nNope... The number is LESS than " +
-        	    	    usrGuess + "\n" +
-        	    	    "Guess Again... \n";
-        	    	String WrongGuessGreater = 
-        	    	    " \nNope... The number is GREATER than " +
-        	    	    usrGuess + "\n" +
-        	    	    "Guess Again... \n";
+				String WrongGuessLess = " \nNope... The number is LESS than " +
+						usrGuess + "\n" +
+						"Guess Again... \n";
+				String WrongGuessGreater = " \nNope... The number is GREATER than " +
+						usrGuess + "\n" +
+						"Guess Again... \n";
 
+				// usrGuess Checker
+				if (Num < usrGuess) {
 
+					try {
 
+						System.out.print("\033[H\033[2J");
+						System.out.flush();
 
-            		// usrGuess Checker
-            		if ( Num < usrGuess ) {
+						System.out.println(WrongGuessLess);
 
-						try {
+						Thread.sleep(800);
 
-							System.out.print( "\033[H\033[2J" );
-							System.out.flush();
+					} catch (InterruptedException Break) {
 
-							System.out.println ( WrongGuessLess );
+						System.out.println(ErrorMsg);
 
-							Thread.sleep(800);
+					}
 
-						} catch ( InterruptedException Break ) {
+				} else if (Num > usrGuess) {
 
-							System.out.println ( ErrorMsg );
+					try {
 
-						}
- 
-            		} else if ( Num > usrGuess ) {
+						System.out.print("\033[H\033[2J");
+						System.out.flush();
 
-						try {
+						System.out.println(WrongGuessGreater);
 
-							System.out.print( "\033[H\033[2J" );
-							System.out.flush();
+						Thread.sleep(800);
 
-							System.out.println ( WrongGuessGreater );
+					} catch (InterruptedException Break) {
 
-							Thread.sleep(800);
+						System.out.println(ErrorMsg);
 
-						} catch ( InterruptedException Break ) {
+					}
 
-							System.out.println ( ErrorMsg );
+				} else if (Num == usrGuess) {
 
-						}
+					try {
 
-            		} else if ( Num == usrGuess ) {
+						System.out.print("\033[H\033[2J");
+						System.out.flush();
 
-						try {
+						System.out.println(CorrectGuess);
 
-							System.out.print( "\033[H\033[2J" );
-							System.out.flush();
+						Thread.sleep(800);
 
-							System.out.println ( CorrectGuess );
+						System.exit(0);
 
-							Thread.sleep(800);
+					} catch (InterruptedException Break) {
 
-							System.exit(0);
+						System.out.println(ErrorMsg);
 
-						} catch ( InterruptedException Break ) {
+					}
 
-							System.out.println ( ErrorMsg );
+				}
 
-						}
+			}
 
-            		}
-
-    		}
-
-		} finally { 
+		} finally {
 			usrInput.close();
 		}
 
-    }
+	}
 
 }
