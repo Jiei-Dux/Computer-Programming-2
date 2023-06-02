@@ -33,11 +33,12 @@ public class RhymeChecker {
 		if (same.matches()) {
 			out.println(word2 + " rhymes with " + word1);
 		} else {
-			out.println("oop... looks like " + 
+			/*out.println("oop... looks like " + 
 						word2 + 
 						" does not rhyme with " + 
 						word1 + 
-						" or theres more than 2 letters before '" + sub + "'. ");
+						" or theres more than 2 letters before '" + sub + "'. ");*/
+            out.println ("are you fucking dumb?");
 		}
 
 	}
