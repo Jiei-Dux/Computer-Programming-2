@@ -36,10 +36,12 @@ public class Concurrency extends Thread {
 			Thread.sleep(1000);
 			out.println("\n\nAfter sleep...");
 		} catch (InterruptedException ERROR) {
+			ERROR.printStackTrace();
 		}
 
 	}
 
+	@Override
 	public void run() {
 
 		// YES //
@@ -47,6 +49,7 @@ public class Concurrency extends Thread {
 			Thread.sleep(500);
 			out.println(Thread.currentThread().getName() + " is RUNNING");
 		} catch (InterruptedException ERROR) {
+			ERROR.printStackTrace();
 		}
 
 		// NO //
@@ -54,6 +57,7 @@ public class Concurrency extends Thread {
 			Thread.sleep(500);
 			out.println(Thread.currentThread().getName() + " is TERMINATED");
 		} catch (InterruptedException ERROR) {
+			ERROR.printStackTrace();
 		}
 
 	}
