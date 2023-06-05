@@ -45,14 +45,14 @@ public class Concurrency extends Thread {
 		// YES //
 		try {
 			Thread.sleep(500);
-			out.println(Thread.currentThread().getName() + "is RUNNABLE");
+			out.println(Thread.currentThread().getName() + " is RUNNING");
 		} catch (InterruptedException ERROR) {
 		}
 
 		// NO //
 		try {
 			Thread.sleep(500);
-			out.println(Thread.currentThread().getName() + "is TERMINATED");
+			out.println(Thread.currentThread().getName() + " is TERMINATED");
 		} catch (InterruptedException ERROR) {
 		}
 
